@@ -22,3 +22,8 @@
   3. As a user, I want to be able to view other people's images so that I can keep up with what's happening in their lives. 
 
 * Things like liking photos, sending photos to friends, making instagram stories, etc are cool, but they aren't essential. They should **not** be part of the MVP.
+
+making an app for individuals to help with cooking
+
+want to have a search bar so users 
+
