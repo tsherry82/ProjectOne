@@ -9,14 +9,44 @@
 
 
     <title>Document</title>
+
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 50%;
+        width: 50%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
 </head>
 <body>
 
     <button id="submit">Test</button>
 
-    <button id="googlePlacesSubmit">Google Places Testing Button</button>
-    
+    <button id="googlePlacesSubmit">Google Places Testing Button</button><br><br>
+    <div id="map"></div>
+    <script>
+    var map;
+      function initMap() {
+        //map options
+        var options = {
+          zoom: 12,
+          center: {lat: 28.5383,lng: -81.3792}
+        }
 
+        //new map
+        map = new google.maps.Map(document.getElementById('map'), options);
+      }
+    </script>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLVApErG8r5OM_aMWvRTl09tmGcIhHfWU&callback=initMap"
+    async defer></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script type="text/javascript" src="assets/app.js"></script>
     <script type="text/javascript" src="find.js"></script>
