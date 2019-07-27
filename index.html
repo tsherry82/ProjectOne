@@ -1,24 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- load Ink's css from the cdn -->
+    <link rel="stylesheet" type="text/css" href="http://cdn.ink.sapo.pt/3.1.10/css/ink-flex.min.css">
+    <link rel="stylesheet" type="text/css" href="http://cdn.ink.sapo.pt/3.1.10/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/style.css">
 
 
-    <title>Document</title>
-</head>
+  
+
 <body>
+    <div class="header-wrap">
+        <div class="logo">
+            <h1>EZ-EATZ</h1>
+        </div>
+    </div><!---header-wrap-End--->
 
-    <button id="submit">Test</button>
 
-    <button id="googlePlacesSubmit">Google Places Testing Button</button>
-    
+    <form class="ink-form">
+        <input type="text" placeholder="What's in the fridge!" />
+        <button class="ink-button">Go!</button>
+    </form>
+
+
+    <form class="ink-form">
+        <input type="text" placeholder="Where's the food!" />
+        <button class="ink-button">Go!</button>
+    </form>
+
+
+
+
+
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script type="text/javascript" src="assets/app.js"></script>
     <script type="text/javascript" src="find.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,13 @@
+*{
+    box-sizing:boder box;
+}
+.ink-form{
+    float:left;
+    width: 50%;
+    padding :10px;
+    text-align: center;
+
+}
+h1{
+    text-align: center;
+}
