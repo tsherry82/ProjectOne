@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/style.css">
-
+    <script src="https://code.jquery.com/jquery.js"></script>
 
     <title>Document</title>
 
@@ -35,28 +35,68 @@
 
 
     <div id="recipe-results"></div>
-    
-
-
-    <button id="googlePlacesSubmit">Google Places Testing Button</button><br><br>
-    <div id="map"></div>
+    <form>
+      <input id="searchText">
+      <button id="googlePlacesSubmit">Google Places Testing Button</button>
+      </form><br><br>
+      <div id="map"></div>
     <script>
-    var map;
-      function initMap() {
-        //map options
-        var options = {
-          zoom: 12,
-          center: {lat: 28.5383,lng: -81.3792}
+      var map, service, infoWindow;
+        function initMap() {
+          //map options
+          var options = {
+            zoom: 12,
+            center: {lat: 28.5383,lng: -81.3792}
+          }
+          
+          //new map
+          map = new google.maps.Map(document.getElementById('map'), options);
         }
-
-        //new map
-        map = new google.maps.Map(document.getElementById('map'), options);
+        //when the test button is click it will ask for user's location
+        $("#googlePlacesSubmit").on("click", function(e){
+          e.preventDefault();
+          if(navigator.geolocation){
+          navigator.geolocation.getCurrentPosition(function(position){
+            console.log(position);
+            //finds the lat and lng of the user after asking for permission
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            }
+            //centers the map to the position of the user's location
+            map.setCenter(pos);
+            console.log(pos)
+            //create parameters for search
+            var request = {
+            location: position.coords.latitude + "," + position.coords.longitude,
+            radius: '500',
+            query: 'restaurant'
+          }
+          //initialize the search service from google places api 
+          service = new google.maps.places.PlacesService(map);
+          service.textSearch(request, callback);
+          function callback(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      for (var i = 0; i < results.length; i++) {
+        var place = results[i];
+        createMarker(results[i]);
       }
-    </script>
+    }
+  }
+            //displays data of the location in readable formats
+            $.get("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBLVApErG8r5OM_aMWvRTl09tmGcIhHfWU&latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor=false", function(data){
+              console.log(data);
+            })
+          });
+          } else {
+            console.log("doesn't support geolocation");
+          }
+        });
+      </script>
     
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLVApErG8r5OM_aMWvRTl09tmGcIhHfWU&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLVApErG8r5OM_aMWvRTl09tmGcIhHfWU&callback=initMap&libraries=places"
     async defer></script>
-    <script src="https://code.jquery.com/jquery.js"></script>
+    
     <script type="text/javascript" src="assets/app.js"></script>
 
 </body>
