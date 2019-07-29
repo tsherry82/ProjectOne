@@ -4,7 +4,7 @@
 
 // **********FUNCTIONS**********
 function findRecipes() {
-
+    console.log("test")
     var ingredients = $("#recipe-search").val();
 
     // **********API LINK AND KEY **********
@@ -41,6 +41,12 @@ function findRecipes() {
             var recipeSource = $("<a>");
             recipeSource.attr("href", recipeLink).html("Click here for recipe link!");
 
+            var card = $("<div class='card'>");
+            
+            card.append(displayTitle);
+            card.append(displayScore);
+            card.append(displayImage);
+            card.append(recipeSource);
 
             displayRecipe.append(displayTitle).append(displayScore).append(displayImage).append(recipeSource);
 
@@ -51,8 +57,9 @@ function findRecipes() {
     })
 }
 // **********ON CLICK**********
-$("#submit").on("click", function (event) {
+$(".submit").on("click", function (event) {
     event.preventDefault();
+    console.log("on click");
     findRecipes();
 });
 
