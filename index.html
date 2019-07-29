@@ -14,7 +14,7 @@
 
     <title>Document</title>
 
-    
+
 </head>
 
 
@@ -23,32 +23,38 @@
         <div class="logo">
             <h1>EZ-EATZ</h1>
         </div>
-    </div><!---header-wrap-End--->
+    </div>
+    <!---header-wrap-End--->
 
 
-    <form class="ink-form">
-        <input type="text" placeholder="What's in the fridge!" />
-        <button class="ink-button">Go!</button>
-    </form>
+    <div class="row">
+        <div class="col-md-6">
+
+            <form action="input">
+                <input type="text" id="recipe-search" placeholder="What do you want to make?!">
+                <button class="submit">Lets get cooking!</button>
+            </form>
+            <div id="recipe-results"></div>
+        </div>
 
 
-    <form class="ink-form">
-        <input type="text" placeholder="Where's the food!" />
-        <button class="ink-button">Go!</button>
-    </form>
+        <div class="col-md-6">
+            <form>
+                <input id="searchText">
+                <button id="googlePlacesSubmit">Google Places Testing Button</button>
+            </form><br><br>
+            <div id="map"></div>
+        </div>
+
+    </div>
 
 
 
 
 
 
-
-    <div id="recipe-results"></div>
-    <form>
-        <input id="searchText">
-        <button id="googlePlacesSubmit">Google Places Testing Button</button>
-    </form><br><br>
-    <div id="map"></div>
+    <!-- ==================================================================== -->
+    <!-- ********** CODE FOR GOOGLE MAPS ********** -->
     <script>
       var map, service;
       var markers = [];
@@ -144,7 +150,8 @@
 
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLVApErG8r5OM_aMWvRTl09tmGcIhHfWU&callback=initMap&libraries=places"
-        async defer></script>
+        async defer>
+        </script>
 
     <script type="text/javascript" src="assets/app.js"></script>
 
