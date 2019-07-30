@@ -14,8 +14,6 @@
     <link rel="stylesheet" href="assets/style.css">
     <script src="https://code.jquery.com/jquery.js"></script>
 
-    <title>EZ - EATS </title>
-
 
 </head>
 
@@ -66,19 +64,7 @@
         //new map
         map = new google.maps.Map(document.getElementById('map'), options);
       }
-  
-      //when the test button is click it will ask for user's location
-      $("#googlePlacesSubmit").on("click", function (e) {
-        e.preventDefault();
-        // Sets the map on all markers in the array.
-        function setMapOnAll(map) {
-          for (var i = 0; i < markers.length; i++) {
-            markers[i].setMap(map);
-          }
-        }
-        setMapOnAll(null);
-        markers = [];
-        if (navigator.geolocation) {
+      if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
             console.log(position);
             //finds the lat and lng of the user after asking for permission
@@ -91,6 +77,18 @@
             console.log(pos)
             //places location variable
             var userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            //when the test button is click it will ask for user's location
+      $("#googlePlacesSubmit").on("click", function (e) {
+        e.preventDefault();
+        // Sets the map on all markers in the array.
+        function setMapOnAll(map) {
+          for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+          }
+        }
+        setMapOnAll(null);
+        markers = [];
+        
             //search parameters
             var searchPara = $("#searchText").val().trim();
             console.log("search paramaters: " + searchPara);
@@ -137,10 +135,12 @@
               console.log(data);
             })
           });
-        } else {
+         
+   
+           })} else {
           console.log("doesn't support geolocation");
         }
-      });
+      
   
   
   
