@@ -1,8 +1,5 @@
 // **********SUDO**********
-// **********VARIABLES**********
-// empty array for ingredients 
-
-// **********FUNCTIONS**********
+// **********FUNCTION**********
 function findRecipes() {
     console.log("test")
     var ingredients = $("#recipe-search").val();
@@ -29,9 +26,16 @@ function findRecipes() {
             var recipeLink = response.recipes[i].f2f_url;
             console.log(recipeLink);
 
-            var displayRecipe = $("<div>");
+            var displayRecipe = $("<div class='card'>");
 
-            var displayTitle = $("<p>").text("Recipe: " + recipeTitle);
+            
+
+            var body = $("<div class='card-body'>");
+            body.append(displayRecipe);
+            
+        
+
+            var displayTitle = $("<h5 class='card-title'>").text("Recipe: " + recipeTitle);
 
             var displayScore = $("<p>").text("Social Ranking: " + score);
 
@@ -41,14 +45,9 @@ function findRecipes() {
             var recipeSource = $("<a>");
             recipeSource.attr("href", recipeLink).html("Click here for recipe link!");
 
-            var card = $("<div class='card'>");
             
-            card.append(displayTitle);
-            card.append(displayScore);
-            card.append(displayImage);
-            card.append(recipeSource);
 
-            displayRecipe.append(displayTitle).append(displayScore).append(displayImage).append(recipeSource);
+            displayRecipe.append(displayImage).append(displayTitle).append(displayScore).append(recipeSource);
 
             $("#recipe-results").append(displayRecipe)
         }
