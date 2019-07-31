@@ -16,8 +16,8 @@ h1{
  /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
        #map {
-        height: 50%;
-        width: 50%;
+        height: 400px;
+        width: 450px;
     }
 
     /* Optional: Makes the sample page fill the window. */
@@ -25,5 +25,10 @@ h1{
     body {
         height: 100%;
         margin: 0;
-        padding: 0;
+        padding: 10px;
+    }
+    .card {
+        width: 480px;
+        margin-bottom: 24px;
+
     }
