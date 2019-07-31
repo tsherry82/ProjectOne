@@ -25,5 +25,10 @@ h1{
     body {
         height: 100%;
         margin: 0;
-        padding: 0;
+        padding: 10px;
+    }
+    .card {
+        width: 480px;
+        margin-bottom: 24px;
+
     }

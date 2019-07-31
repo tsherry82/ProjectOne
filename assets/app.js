@@ -26,7 +26,7 @@ function findRecipes() {
             var recipeLink = response.recipes[i].f2f_url;
             console.log(recipeLink);
 
-            var displayRecipe = $("<div class='card'>");
+            var displayRecipe = $("<div class='card text-primary bg-light'>");
 
             
 
