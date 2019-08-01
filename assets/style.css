@@ -1,6 +1,11 @@
 
 *{
     box-sizing:border-box;
+    font-family: 'Roboto Mono', monospace;
+
+    
+
+
 }
 .ink-form{
     float:left;
@@ -11,6 +16,7 @@
 }
 h1{
     text-align: center;
+    text-decoration:underline;
 }
 
  /* Always set the map height explicitly to define the size of the div
@@ -21,11 +27,13 @@ h1{
     }
 
     /* Optional: Makes the sample page fill the window. */
-html,
+
 body {
         height: 100%;
         margin: 0;
         padding: 10px;
+       
+
     }
     .card {
         width: 480px;
@@ -39,3 +47,7 @@ body {
     .left {
         border-right: solid gray 1px;
     }
+    
+      
+
+    
