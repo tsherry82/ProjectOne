@@ -77,6 +77,11 @@
             console.log(pos)
             //places location variable
             var userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            //places marker on user location
+            var marker = new google.maps.Marker({
+              position: userLocation,
+              map: map
+            })
             //when the test button is click it will ask for user's location
       $("#googlePlacesSubmit").on("click", function (e) {
         e.preventDefault();
@@ -105,7 +110,7 @@
                 map: map
               })
               markers.push(marker);
-              var contentString = props.name + "<br>" + "Rating: " + props.rating + "/5";
+              var contentString = props.name + "<br>" + "Rating: " + props.rating + "/5" + "<br><button id='dir'>Directions</button>";
               //infoWindow variable
               var infoWindow = new google.maps.InfoWindow({
                 content: contentString
