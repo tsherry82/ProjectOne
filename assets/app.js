@@ -26,26 +26,26 @@ function findRecipes() {
             var recipeLink = response.recipes[i].f2f_url;
             console.log(recipeLink);
 
-            var displayRecipe = $("<div class='card text-primary bg-light'>");
+            var displayRecipe = $("<div class='card text-danger bg-light'>");
 
-            
+
 
             var body = $("<div class='card-body'>");
             body.append(displayRecipe);
-            
-        
 
-            var displayTitle = $("<h5 class='card-title'>").text("Recipe: " + recipeTitle);
 
-            var displayScore = $("<p>").text("Social Ranking: " + score);
+
+            var displayTitle = $("<h5 class='card-title'>").text(recipeTitle);
+
+            var displayScore = $("<p>").text("Score: " + score);
 
             var displayImage = $("<img>");
             displayImage.attr("src", recipeImage);
 
             var recipeSource = $("<a>");
-            recipeSource.attr("href", recipeLink).html("Click here for recipe link!");
+            recipeSource.attr("href", recipeLink).html("Click here for recipe link!").attr("target", "_blank");
 
-            
+
 
             displayRecipe.append(displayImage).append(displayTitle).append(displayScore).append(recipeSource);
 
@@ -58,7 +58,7 @@ function findRecipes() {
 // **********ON CLICK**********
 $(".submit").on("click", function (event) {
     event.preventDefault();
-    console.log("on click");
+    $("#recipe-results").empty();
     findRecipes();
 });
 
