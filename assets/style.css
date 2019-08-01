@@ -32,9 +32,12 @@ body {
         height: 100%;
         margin: 0;
         padding: 10px;
-       
+
+        background-image: url("images/background\ image\ .jpg"); 
+        color: white;
 
     }
+    
     .card {
         width: 480px;
         margin-bottom: 24px;
@@ -45,9 +48,18 @@ body {
     } 
     
     .left {
-        border-right: solid gray 1px;
+        border-right: solid black 6px;
     }
-    
-      
+    .jumbotron {
+        border: solid black 6px;
+        background-color: skyblue;
+    }
 
-    
+    button {
+        background-color: skyblue;
+    }
+    .big {
+        font-size: 80px;
+
+    }
+
