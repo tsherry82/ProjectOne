@@ -1,6 +1,11 @@
 
 *{
     box-sizing:border-box;
+    font-family: 'Roboto Mono', monospace;
+
+    
+
+
 }
 .ink-form{
     float:left;
@@ -11,6 +16,7 @@
 }
 h1{
     text-align: center;
+    text-decoration:underline;
 }
 
  /* Always set the map height explicitly to define the size of the div
@@ -21,12 +27,15 @@ h1{
     }
 
     /* Optional: Makes the sample page fill the window. */
+
 body {
         height: 100%;
         margin: 0;
         padding: 10px;
+
         background-image: url("images/background\ image\ .jpg"); 
         color: white;
+
     }
     
     .card {
@@ -45,6 +54,7 @@ body {
         border: solid black 6px;
         background-color: skyblue;
     }
+
     button {
         background-color: skyblue;
     }
@@ -52,3 +62,4 @@ body {
         font-size: 80px;
 
     }
+
