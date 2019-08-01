@@ -2,57 +2,68 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- load Ink's css from the cdn -->
-    <link rel="stylesheet" type="text/css" href="http://cdn.ink.sapo.pt/3.1.10/css/ink-flex.min.css">
-    <link rel="stylesheet" type="text/css" href="http://cdn.ink.sapo.pt/3.1.10/css/font-awesome.min.css">
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <!-- link to css style sheet -->
-    <link rel="stylesheet" href="assets/style.css">
-    <script src="https://code.jquery.com/jquery.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- load Ink's css from the cdn -->
+  <link rel="stylesheet" type="text/css" href="http://cdn.ink.sapo.pt/3.1.10/css/ink-flex.min.css">
+  <link rel="stylesheet" type="text/css" href="http://cdn.ink.sapo.pt/3.1.10/css/font-awesome.min.css">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- link to css style sheet -->
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- logo and title of site -->
+  <link rel="icon" type="image/gif" href="assets/images/og_image.jpg" />
+  <title>EZ-EATZ</title>
 
 
 </head>
 
 
 <body>
-    <div class="header-wrap">
-        <div class="logo">
-            <h1>EZ-EATZ</h1>
-        </div>
+  <div class="header-wrap">
+    <div class="logo">
+      <h1>EZ-EATZ</h1>
+
+      <p> Are you lazy or helpless and do not know how to cook? Then let us help you either find a local spot to find
+        what you are craving! Or if you are feeling adventurous then lets look up some recipes based off of what you
+        want to cook or something your mom shared on Facebook that acutallly looked good!</p>
     </div>
-    <!---header-wrap-End--->
+  </div>
+  <!---header-wrap-End--->
 
 
-    <div class="row">
-        <div class="col-md-6">
+  <div class="row">
+    <div class="col-md-6 left">
 
-            <form action="input">
-                <input type="text" id="recipe-search" placeholder= "What do you want to make?!">
-                <button class="submit">Lets get cooking!</button>
-            </form>
-            <br>
-            <div id="recipe-results"></div>
-        </div>
-
-
-        <div class="col-md-6">
-            <form>
-                <input id="searchText">
-                <button id="googlePlacesSubmit">Lets go get something to eat!</button>
-            </form><br><br>
-            <div id="map"></div>
-        </div>
-
+      <h1>MAKE</h1>
+      <p>Type in the name of the dish you want to cook or the ingredients you have!</p>
+      <form action="input">
+        <input type="text" id="recipe-search" placeholder="">
+        <button class="submit">Lets get cooking!</button>
+      </form>
+      <br>
+      <div id="recipe-results"></div>
     </div>
 
-    <!-- ==================================================================== -->
-    <!-- ********** CODE FOR GOOGLE MAPS ********** -->
-    <script>
-      var map, service;
+
+    <div class="col-md-6">
+      <h1>FIND</h1>
+      Look for local pizza joints here, or whatever you are into!
+      <form>
+        <input id="searchText">
+        <button id="googlePlacesSubmit">Lets go get something to eat!</button>
+      </form><br><br>
+      <div id="map"></div>
+    </div>
+
+  </div>
+
+  <!-- ==================================================================== -->
+  <!-- ********** CODE FOR GOOGLE MAPS ********** -->
+  <script>
+    var map, service;
       var markers = [];
       function initMap() {
         //map options
@@ -145,18 +156,18 @@
            })} else {
           console.log("doesn't support geolocation");
         }
-      
-  
-  
-  
+
+
+
+
+  </script>
+
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLVApErG8r5OM_aMWvRTl09tmGcIhHfWU&callback=initMap&libraries=places"
+    async defer>
     </script>
 
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLVApErG8r5OM_aMWvRTl09tmGcIhHfWU&callback=initMap&libraries=places"
-        async defer>
-        </script>
-
-    <script type="text/javascript" src="assets/app.js"></script>
+  <script type="text/javascript" src="assets/app.js"></script>
 
 </body>
 

@@ -1,6 +1,6 @@
 
 *{
-    box-sizing:boder box;
+    box-sizing:border-box;
 }
 .ink-form{
     float:left;
@@ -15,15 +15,27 @@ h1{
 
  /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-       #map {
+#map {
         height: 400px;
         width: 450px;
     }
 
     /* Optional: Makes the sample page fill the window. */
-    html,
-    body {
+html,
+body {
         height: 100%;
         margin: 0;
-        padding: 0;
+        padding: 10px;
+    }
+    .card {
+        width: 480px;
+        margin-bottom: 24px;
+        }
+
+    img {
+        width: 360px;
+    } 
+    
+    .left {
+        border-right: solid gray 1px;
     }
