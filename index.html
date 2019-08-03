@@ -15,7 +15,9 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <!-- logo and title of site -->
   <link rel="icon" type="image/gif" href="assets/images/og_image.jpg" />
-  <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Josefin+Sans|Lato|Lobster|Open+Sans+Condensed:300|Pacifico|Roboto+Mono&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Josefin+Sans|Lato|Lobster|Open+Sans+Condensed:300|Pacifico|Roboto+Mono&display=swap"
+    rel="stylesheet">
   <title>EZ-EATZ</title>
 
 
@@ -24,12 +26,14 @@
 
 <body>
   <div class="header-wrap">
-    <div class="logo">
-      <h1>EZ-EATZ</h1>
+    <div class="jumbotron">
+      <h1 class="big">EZ-EATZ</h1>
+
 
       <p> Are you lazy? or helpless? Don't know how to cook? Then let us help you either find a local spot to find
         what you are craving! Or if you are feeling adventurous then lets look up some recipes based off of what you
         want to cook or something your mom shared on Facebook that acutally looked good!</p>
+
     </div>
   </div>
   <!---header-wrap-End--->
@@ -39,7 +43,11 @@
     <div class="col-md-6 left">
 
       <h1>MAKE</h1>
-      <p>Input the type of dish you want to cook or the ingredients you have!</p>
+
+      <p class="text">Input the type of dish you want to cook or the ingredients you have!</p>
+
+    
+
       <form action="input">
         <input type="text" id="recipe-search" placeholder="">
         <button class="submit">Lets get cooking!</button>
@@ -50,14 +58,24 @@
 
 
     <div class="col-md-6">
-      <h1>FIND</h1>
-      Look for local pizza joints here, or whatever you are into!
-      <form>
+      <h1 class="text">FIND</h1>
+     <p class="text"> Look for local pizza joints here, or whatever you are in the mood for!</p>
+      <form action="">
         <input id="searchText">
         <button id="googlePlacesSubmit">Lets go get something to eat!</button>
       </form><br><br>
       <div id="map"></div>
+      <!--Card for Directions for future features-->
+      <!-- <div class="card bg-light mb-3" id="directions" style="max-width: 18rem;">
+        <div class="card-header card-1">Header</div>
+        <div class="card-body">
+          <h5 class="card-title card-1">Light card title</h5>
+          <p class="card-text card-1">Some quick example text to build on the card title and make up the bulk of the
+            card's content.</p>
+        </div>
+      </div> -->
     </div>
+
 
   </div>
 
@@ -75,7 +93,9 @@
 
       //new map
       map = new google.maps.Map(document.getElementById('map'), options);
+
     }
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
         console.log(position);
@@ -89,6 +109,11 @@
         console.log(pos)
         //places location variable
         var userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        //places marker on user location
+        var marker = new google.maps.Marker({
+          position: userLocation,
+          map: map
+        })
         //when the test button is click it will ask for user's location
         $("#googlePlacesSubmit").on("click", function (e) {
           e.preventDefault();
@@ -110,26 +135,28 @@
             radius: '500',
             query: searchPara
           }
-          //create marker function
-          function createMarker(props) {
-            var marker = new google.maps.Marker({
-              position: props.geometry.location,
-              map: map
-            })
-            markers.push(marker);
-            var contentString = props.name + "<br>" + "Rating: " + props.rating + "/5";
-            //infoWindow variable
-            var infoWindow = new google.maps.InfoWindow({
-              content: contentString
-            })
-            //marker click function
-            marker.addListener('click', function () {
-              infoWindow.open(map, marker);
-            });
-          }
+          // //create marker function
+          // function createMarker(props) {
+          //   var marker = new google.maps.Marker({
+          //     position: props.geometry.location,
+          //     map: map
+          //   })
+          //   markers.push(marker);
+          //   var contentString = props.name + "<br>" + "Rating: " + props.rating + "/5" + "<br><button id='dir'>Directions</button>";
+          //   //infoWindow variable
+          //   var infoWindow = new google.maps.InfoWindow({
+          //     content: contentString
+          //   })
+          //   //marker click function
+          //   marker.addListener('click', function () {
+          //     infoWindow.open(map, marker);
+          //   });
+          // }
 
 
           //initialize the search service from google places api 
+          var infowindow = new google.maps.InfoWindow();
+
           service = new google.maps.places.PlacesService(map);
           service.textSearch(request, callback);
           function callback(results, status) {
@@ -137,10 +164,29 @@
               for (var i = 0; i < results.length; i++) {
                 var place = results[i];
                 console.log(place);
-                createMarker(place);
+                request = {
+                  placeId: place.place_id
+                }
+                // createMarker(place);
+                service.getDetails(request, function (place, status) {
+                  if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    var marker = new google.maps.Marker({
+                      map: map,
+                      position: place.geometry.location
+                    });
+                    google.maps.event.addListener(marker, 'click', function () {
+                      infowindow.setContent('<div><strong>' + place.name + '</strong><br>'  +
+                        place.formatted_address + "<br>" + "Rating: " + place.rating + "/5" + "<br><button id='dir'>Directions</button>" + '</div>');
+                      infowindow.open(map, this);
+                    });
+                  }
+                });
               }
             }
           }
+
+
+
 
           //displays data of the location in readable formats
           $.get("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBLVApErG8r5OM_aMWvRTl09tmGcIhHfWU&latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor=false", function (data) {
@@ -150,11 +196,10 @@
 
 
       })
+
     } else {
       console.log("doesn't support geolocation");
     }
-
-
 
 
   </script>

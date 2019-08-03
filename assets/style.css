@@ -7,6 +7,11 @@
 
 
 }
+#directions{
+    position: relative;
+    top: -375px;
+    left: 420px;
+}
 .ink-form{
     float:left;
     width: 50%;
@@ -14,16 +19,23 @@
     text-align: center;
 
 }
+.card-1{
+    color: black;
+}
 h1{
     text-align: center;
     text-decoration:underline;
+    color: white;
+}
+.text{
+    color: white;
 }
 
  /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 #map {
-        height: 400px;
-        width: 450px;
+        height: 375px;
+        width: 400px;
     }
 
     /* Optional: Makes the sample page fill the window. */
@@ -32,9 +44,11 @@ body {
         height: 100%;
         margin: 0;
         padding: 10px;
-       
+        background-image: url("images/background\ image\ .jpg"); 
+        color: black;
 
     }
+    
     .card {
         width: 480px;
         margin-bottom: 24px;
@@ -45,9 +59,18 @@ body {
     } 
     
     .left {
-        border-right: solid gray 1px;
+        border-right: solid black 6px;
     }
-    
-      
+    .jumbotron {
+        border: solid black 6px;
+        background-color: skyblue;
+    }
 
-    
+    button {
+        background-color: skyblue;
+    }
+    .big {
+        font-size: 80px;
+
+    }
+
